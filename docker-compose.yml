@@ -1,6 +1,6 @@
 version: '3'
 services:
-  dev:
+  song-ui-app:
     container_name: songs-ui-container
     image: songs-ui-image
     build:
@@ -9,4 +9,4 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./:/app
+      - /:/src/index

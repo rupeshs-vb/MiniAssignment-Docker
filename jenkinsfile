@@ -3,22 +3,20 @@ pipeline{
 	stages{
 		stage("test"){
     		steps{
-    			git 'https://github.com/rupeshs-vb/MiniAssignment-Docker'
     			sh "npm test"
     		}
 	    }
 	    stage("build/push"){
 	        steps{
-	            git 'https://github.com/rupeshs-vb/MiniAssignment-Docker'
-	            sh "docker build -t project ."
-	            sh "docker tag project rupeshsh001/project"
-	            sh "docker push rupeshsh001/project"
+	            sh "docker build -t songui-image ."
+	            sh "docker tag songui-image rupeshsh001/songui-image"
+	            sh "docker push rupeshsh001/songui-image"
 	        }
 	    }
 	    stage("deploy"){
 	        steps{
-	            sh "docker pull rupeshsh001/project"
-	            sh "docker run -d -p 3000:3000 rupeshsh001/project"
+	            sh "docker pull rupeshsh001/songui-image"
+	            sh "docker run -d -p 3000:3000 rupeshsh001/songui-image"
 	        }
 	    }
 	}
